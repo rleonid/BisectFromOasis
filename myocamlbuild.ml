@@ -18,16 +18,23 @@ let has_coverage () =
     l ()
   with _ -> false
 
+let bisect_dir () =
+  let ic = Unix.open_process_in "ocamlfind query bisect" in
+  let line = input_line ic in
+  close_in ic;
+  line
+
 let () =
   let additional_rules = function
       | After_rules     ->
         if has_coverage () then
           begin
-            flag ["pp"]             (S [A"camlp4o"; A"str.cma"; A"/Users/leonidrozenberg/.opam/4.01.0/lib/bisect/bisect_pp.cmo"]);
-            flag ["compile"]        (S [A"-I"; A"/Users/leonidrozenberg/.opam/4.01.0/lib/bisect"]);
-            flag ["link"; "byte"]   (S [A"-I"; A"/Users/leonidrozenberg/.opam/4.01.0/lib/bisect"; A"bisect.cma"]);
-            flag ["link"; "native"] (S [A"-I"; A"/Users/leonidrozenberg/.opam/4.01.0/lib/bisect"; A"bisect.cmxa"]);
-            flag ["link"; "java"]   (S [A"-I"; A"/Users/leonidrozenberg/.opam/4.01.0/lib/bisect"; A"bisect.cmja"])
+            let bsdir = Printf.sprintf "%s/%s" (bisect_dir ()) in
+            flag ["pp"]             (S [A"camlp4o"; A"str.cma"; A (bsdir "bisect_pp.cmo")]);
+            flag ["compile"]        (S [A"-I"; A (bsdir "")]);
+            flag ["link"; "byte"]   (S [A"-I"; A (bsdir ""); A"bisect.cma"]);
+            flag ["link"; "native"] (S [A"-I"; A (bsdir ""); A"bisect.cmxa"]);
+            flag ["link"; "java"]   (S [A"-I"; A (bsdir ""); A"bisect.cmja"])
           end
         else
           ()
