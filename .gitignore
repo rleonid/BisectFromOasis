@@ -1,9 +1,6 @@
-*.annot
-*.cmo
-*.cma
-*.cmi
-*.a
-*.o
-*.cmx
-*.cmxs
-*.cmxa
+_build
+*.native
+*.byte
+setup*
+bisect*.out
+report_dir
