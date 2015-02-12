@@ -1,0 +1,19 @@
+Name:         BisectFromOasis
+Version:      0
+Synopsis:     Demonstrate how to (optioanlly) implement bisect coverage
+Authors:      Leonid Rozenberg <leonidr@gmail.com>
+License:      LGPL with OCaml linking exception
+
+OASISFormat:  0.4
+BuildTools:   ocamlbuild
+Plugins:      META (0.4), DevFiles (0.4)
+XDevFilesEnableConfigure: false
+
+Flag coverage
+  Description: build with coverage
+  Default:     false
+
+Executable helloworld
+  Path: .
+  MainIs: main.ml
+  CompiledObject: best
