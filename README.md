@@ -1,7 +1,10 @@
 # BisectFromOasis
-Example an OCaml project compiled with Oasis with optional code coverage provided by Bisect
+Example of an OCaml project compiled with [Oasis](http://oasis.forge.ocamlcore.org/MANUAL.html) with optional code coverage provided by [Bisect](http://bisect.x9c.fr/index.html).
 
-Steps:
+## Setup
+`opam install bisect`
+
+## Steps:
 
   1. Create `_oasis`
 
