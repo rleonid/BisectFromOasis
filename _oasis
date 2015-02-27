@@ -1,6 +1,6 @@
 Name:         BisectFromOasis
 Version:      0
-Synopsis:     Demonstrate how to (optioanlly) implement bisect coverage
+Synopsis:     Demonstrate how to (optionally) implement bisect coverage
 Authors:      Leonid Rozenberg <leonidr@gmail.com>
 License:      LGPL with OCaml linking exception
 

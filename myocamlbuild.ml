@@ -30,14 +30,16 @@ let () =
         if has_coverage () then
           begin
             let bsdir = Printf.sprintf "%s/%s" (bisect_dir ()) in
-            flag ["pp"]             (S [A"camlp4o"; A"str.cma"; A (bsdir "bisect_pp.cmo")]);
-            flag ["compile"]        (S [A"-I"; A (bsdir "")]);
-            flag ["link"; "byte"]   (S [A"-I"; A (bsdir ""); A"bisect.cma"]);
-            flag ["link"; "native"] (S [A"-I"; A (bsdir ""); A"bisect.cmxa"]);
-            flag ["link"; "java"]   (S [A"-I"; A (bsdir ""); A"bisect.cmja"])
+            flag ["pp"]                        (S [A"camlp4o"; A"str.cma"; A (bsdir "bisect_pp.cmo")]);
+            flag ["compile"]                   (S [A"-I"; A (bsdir "")]);
+            flag ["link"; "byte"; "program"]   (S [A"-I"; A (bsdir ""); A"bisect.cmo"]);
+            flag ["link"; "native"; "program"] (S [A"-I"; A (bsdir ""); A"bisect.cmx"]);
           end
         else
           ()
       | _ -> ()
   in
-  dispatch additional_rules
+  dispatch
+    (MyOCamlbuildBase.dispatch_combine
+      [MyOCamlbuildBase.dispatch_default conf package_default;
+      additional_rules])
