@@ -9,7 +9,7 @@ Example of an OCaml project compiled with [Oasis](http://oasis.forge.ocamlcore.o
   1. Create `_oasis`
 
      Be careful about creating a `Makefile` via `DevFiles` since Oasis will wipe out targets used for creating report, below.
-  2. Create `myocamlbuild.ml`
+  2. Create `myocamlbuild.ml.`  Copying the one in this repository can server as a guide.
   3. `oasis setup -setup-update dynamic`
      
      `none` will have `Oasis` write out a `_tags` file which tries to link bisect against all `*.ml`.
