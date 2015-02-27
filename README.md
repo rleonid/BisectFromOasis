@@ -8,7 +8,7 @@ Example of an OCaml project compiled with [Oasis](http://oasis.forge.ocamlcore.o
 
   1. Create `_oasis`
 
-     Becareful about creating a `Makefile` via `DevFiles` since Oasis will whipe out targets used for creating report, below.
+     Be careful about creating a `Makefile` via `DevFiles` since Oasis will wipe out targets used for creating report, below.
   2. Create `myocamlbuild.ml`
   3. `oasis setup -setup-update dynamic`
      
@@ -18,7 +18,7 @@ Example of an OCaml project compiled with [Oasis](http://oasis.forge.ocamlcore.o
      Can't pass arguments to make file.
   5. `ocaml setup.ml -build`
   6. `make report`
-     Create webpage in `report_dir`.
+     Create a webpage in `report_dir`.
 
 ## Etc.
   - 4.01.0
