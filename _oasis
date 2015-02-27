@@ -10,10 +10,20 @@ Plugins:      META (0.4), DevFiles (0.4)
 XDevFilesEnableConfigure: false
 
 Flag coverage
-  Description: build with coverage
+  Description: Instrument code with Bisect to provide coverage reports
   Default:     false
 
 Executable helloworld
   Path: .
   MainIs: main.ml
+  CompiledObject: best
+
+Library greeter
+  Path: src
+  Modules: Greeter
+
+Executable helloworld_lib
+  Path: .
+  BuildDepends: greeter
+  MainIs: main_lib.ml
   CompiledObject: best
