@@ -4,7 +4,7 @@ open Kaputt.Abbreviations
 let () =
   Printf.printf "Running test!\n";
   Test.run_tests [
-    Test.make_simple_test ~title:"greeter"
+    Test.make_simple_test ~title:"unit is unit"
       (fun () -> 
         Assert.equal () (greet ()))
   ]
