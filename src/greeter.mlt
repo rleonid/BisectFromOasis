@@ -1,8 +1,10 @@
 
+open Kaputt.Abbreviations
+
 let () =
+  Printf.printf "Running test!\n";
   Test.run_tests [
     Test.make_simple_test ~title:"greeter"
       (fun () -> 
-        Printf.printf "Running test!\n";
-        Assert.equal_float () (greet ()))
+        Assert.equal () (greet ()))
   ]
