@@ -24,7 +24,7 @@ report: report_dir
 	bisect-report -I _build -html report_dir $(shell ls -t bisect*.out | head -1)
 
 clean:
-	rm -rf _build main.native main_lib.native
+	ocamlbuild -clean
 
 clean_reports:
 	rm -rf report_dir bisect*.out
