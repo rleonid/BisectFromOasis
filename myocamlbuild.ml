@@ -43,6 +43,15 @@ let rec copy_mlt_files path =
 let () =
   let additional_rules = function
       | After_rules     ->
+        print_bytes "---------------Targets\n";
+        print_bytes (String.concat " " !Options.targets);
+        print_bytes "\n---------------OC\n";
+        print_bytes (String.concat " " !Options.ocaml_libs);
+        print_bytes "\n---------------PA\n";
+        print_bytes (String.concat " " !Options.program_args);
+        print_bytes "\n---------------IL\n";
+        print_bytes (String.concat " " !Options.ignore_list);
+        print_bytes "\n---------------\n";
         if has_coverage () then
           begin
             let bsdir = Printf.sprintf "%s/%s" (lib_dir "bisect") in
@@ -54,8 +63,9 @@ let () =
         else
           begin
             let kpdir = Printf.sprintf "%s/%s" (lib_dir "kaputt") in
+            print_bytes "---- awesome\n";
             copy_mlt_files "src";
-            flag ["kaputt"; "pp"]              (S [A (kpdir "kaputt_pp.byte"); A"on"; A"camlp4o"]);
+            flag ["pp"]                        (S [A (kpdir "kaputt_pp.byte"); A"on"; A"camlp4o"]);
             flag ["compile"]                   (S [A"-I"; A (kpdir "")]);
             flag ["link"; "native"; "program"] (S [A"-I"; A (kpdir ""); A"kaputt.cmx"]);
           end

@@ -27,3 +27,13 @@ Executable helloworld_lib
   BuildDepends: greeter
   MainIs: main_lib.ml
   CompiledObject: best
+
+Executable test
+  Install: false
+  Path: .
+  MainIs: test.ml
+  BuildDepends: kaputt, helloworld_lib
+
+Test main
+  Type: Custom(0,0,1)
+  Command: $test
